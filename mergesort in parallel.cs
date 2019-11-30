@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 public class SortAlgorithm<T> where T : IComparable<T>
@@ -87,7 +88,11 @@ public class Program
 			foreach (int i in ar)
 				Console.WriteLine(i);
 			*/
-			var watch = System.Diagnostics.Stopwatch.StartNew();
+			// Create new stopwatch.
+		Stopwatch stopwatch = new Stopwatch();
+
+		// Begin timing.
+			stopwatch.Start();
 			int[] ar = new int[] { 100, 1000, 2000, 3000, 4000, 9, 0 };
 			Task sort = SortAlgorithm<int>.MergeSortAsync(ar);
 			sort.Wait();
@@ -103,8 +108,7 @@ public class Program
 			foreach (int i in ar){
 				Console.WriteLine(i);
 	 		}
-			watch.stop();
-			var elapsedMS = watch.ElapsedMilliseconds;
-			Console.WriteLine(elapsedMS);
+			stopwatch.Stop();
+			Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
     }
 }
