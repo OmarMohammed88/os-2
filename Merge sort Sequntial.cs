@@ -1,36 +1,44 @@
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Merge_sort
-{    
-    class Program
+{
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            List<int> unsorted = new List<int>();
-            List<int> sorted;
+          // Create new stopwatch.
+        Stopwatch stopwatch = new Stopwatch();
 
-            Random random = new Random();
+        // Begin timing.
+          stopwatch.Start();
+          List<int> unsorted = new List<int>();
+          List<int> sorted;
 
-            Console.WriteLine("Original array elements:" );
-            for(int i = 0; i< 10;i++){
-                unsorted.Add(random.Next(0,100));
-                Console.Write(unsorted[i]+" ");
-            }
-            Console.WriteLine();
+          Random random = new Random();
 
-            sorted = MergeSort(unsorted);
+          Console.WriteLine("Original array elements:" );
+          for(int i = 0; i< 10;i++){
+              unsorted.Add(random.Next(0,100));
+              Console.Write(unsorted[i]+" ");
+          }
+          Console.WriteLine();
 
-            Console.WriteLine("Sorted array elements: ");
-            foreach (int x in sorted)
-            {
-                Console.Write(x+" ");
-            }
-			Console.Write("\n");
+          sorted = MergeSort(unsorted);
+
+          Console.WriteLine("Sorted array elements: ");
+          foreach (int x in sorted)
+          {
+              Console.Write(x+" ");
+          }
+          Console.Write("\n");
+          stopwatch.Stop();
+          Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
+
         }
-		
+
 
         private static List<int> MergeSort(List<int> unsorted)
         {
@@ -83,8 +91,8 @@ namespace Merge_sort
                 {
                     result.Add(right.First());
 
-                    right.Remove(right.First());    
-                }    
+                    right.Remove(right.First());
+                }
             }
             return result;
         }
