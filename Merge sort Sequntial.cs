@@ -10,31 +10,47 @@ namespace Merge_sort
         public static void Main(string[] args)
         {
           // Create new stopwatch.
+          int range = 10;
         Stopwatch stopwatch = new Stopwatch();
 
         // Begin timing.
-          stopwatch.Start();
+
           List<int> unsorted = new List<int>();
           List<int> sorted;
+          List<int> unsorted2 = new List<int>();
+          List<int> sorted2;
 
           Random random = new Random();
 
-          Console.WriteLine("Original array elements:" );
-          for(int i = 0; i< 10;i++){
+          Console.WriteLine("Original first array elements:" );
+          for(int i = 0; i< range;i++){
               unsorted.Add(random.Next(0,100));
               Console.Write(unsorted[i]+" ");
           }
           Console.WriteLine();
-
           sorted = MergeSort(unsorted);
-
-          Console.WriteLine("Sorted array elements: ");
+          Console.WriteLine("Sorted first array elements: ");
           foreach (int x in sorted)
           {
               Console.Write(x+" ");
           }
-          Console.Write("\n");
+          Console.WriteLine();
+          Console.WriteLine("Original second array elements:" );
+          for(int i = 0; i< range;i++){
+              unsorted2.Add(random.Next(0,100));
+              Console.Write(unsorted2[i]+" ");
+          }
+          Console.WriteLine();
+          stopwatch.Start();
+          sorted2 = MergeSort(unsorted2);
           stopwatch.Stop();
+          Console.WriteLine("Sorted second array elements: ");
+          foreach (int x in sorted2)
+          {
+              Console.Write(x+" ");
+          }
+
+          Console.Write("\n");
           Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
 
         }

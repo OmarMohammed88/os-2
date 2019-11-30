@@ -76,39 +76,43 @@ public class Program
 {
 	public void Main()
     {
-			/*int[] ar = new int[] { 3, 1, 7, 2, 2, 9, 0 };
-			SortAlgorithm<int>.MergeSort(ar);
-			foreach (int i in ar)
-				Console.WriteLine(i);
+			Stopwatch stopwatch = new Stopwatch();
 
-			Console.WriteLine();
+				int[] ar = new int[] { 100, 1000, 2000, 3000, 4000, 9, 0 };
+				Console.WriteLine("Original first array elements ");
+				foreach(int i in ar)
+					Console.Write(i+",");
+				Console.WriteLine();
+				// stopwatch.Start();
 
-			ar = new int[] { 3, 1, 7, 2, 2, 9 };
-			SortAlgorithm<int>.MergeSort(ar);
-			foreach (int i in ar)
-				Console.WriteLine(i);
-			*/
-			// Create new stopwatch.
-		Stopwatch stopwatch = new Stopwatch();
+				Task sort = SortAlgorithm<int>.MergeSortAsync(ar);
+				// stopwatch.Stop();
+				// stopwatch.stop();
+				Console.WriteLine("Sorted first array ");
+				foreach(int i in ar)
+					Console.Write(i+",");
+					Console.WriteLine();
+				sort.Wait();
 
-		// Begin timing.
-			stopwatch.Start();
-			int[] ar = new int[] { 100, 1000, 2000, 3000, 4000, 9, 0 };
-			Task sort = SortAlgorithm<int>.MergeSortAsync(ar);
-			sort.Wait();
+				// foreach (int i in ar)
+				// 	Console.WriteLine(i);
+				//
+				// Console.WriteLine();
 
-			foreach (int i in ar)
-				Console.WriteLine(i);
-
-			Console.WriteLine();
-
-			ar = new int[] { 93232, 12121, 712, 221, 212,12  };
-			sort = SortAlgorithm<int>.MergeSortAsync(ar);
-			sort.Wait();
-			foreach (int i in ar){
-				Console.WriteLine(i);
-	 		}
-			stopwatch.Stop();
-			Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
+				ar = new int[] { 93232, 12121, 712, 221, 212,12  };
+				Console.WriteLine("Original second array elements ");
+				foreach(int i in ar)
+					Console.Write(i+",");
+				Console.WriteLine();
+				// stopwatch.start();
+				stopwatch.Start();
+				sort = SortAlgorithm<int>.MergeSortAsync(ar);
+				sort.Wait();
+				stopwatch.Stop();
+				Console.WriteLine("Sorted second array ");
+				foreach(int i in ar)
+					Console.Write(i+",");
+					Console.WriteLine();
+				Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
     }
 }
